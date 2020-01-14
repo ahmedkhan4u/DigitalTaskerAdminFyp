@@ -86,5 +86,6 @@
         android:layout_height="1dp"
         android:layout_below="@+id/layout"
         android:layout_marginTop="40dp"
-        android:background="@color/lightGreyColor" />
+        android:background="@color/lightGreyColor"
+        />
 </RelativeLayout>
