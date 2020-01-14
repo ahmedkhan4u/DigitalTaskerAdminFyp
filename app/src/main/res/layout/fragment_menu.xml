@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Fragments.MenuFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Active Transaction"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:id="@+id/active_transactions"
+            style="@style/TextAppearance.AppCompat.Title"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="4dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Transactions History"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:id="@+id/transactions_history"
+            style="@style/TextAppearance.AppCompat.Title"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="4dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Customer Support"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:id="@+id/customer_support"
+            style="@style/TextAppearance.AppCompat.Title"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="4dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Feed Back"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:id="@+id/feed_back"
+            style="@style/TextAppearance.AppCompat.Title"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="4dp"
+            />
+
+
+
+    </LinearLayout>
+
+</ScrollView>

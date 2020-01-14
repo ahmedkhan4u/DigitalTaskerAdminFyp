@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+
+    >
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="#FF7B1A"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:id="@+id/circleImageView"
+        >
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saqib Nawaz"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="CNIC Front"
+            android:layout_marginEnd="30dp"
+            android:textColor="#000"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CNIC Back"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:padding="10dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:padding="30dp"
+            android:background="@drawable/imageview"
+            android:src="@drawable/ic_credit_card"
+            android:id="@+id/image_front"
+            >
+
+        </ImageButton>
+        <ImageButton
+            android:layout_width="150dp"
+            android:padding="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="100dp"
+            android:background="@drawable/imageview"
+            android:src="@drawable/ic_credit_card"
+            android:id="@+id/image_back"
+            >
+
+        </ImageButton>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

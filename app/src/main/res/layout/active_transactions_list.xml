@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reservation Code: 123456"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:textSize="14sp"
+            android:id="@+id/active_reservationCode"
+            android:layout_marginStart="10dp"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightGreyColor"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Amount:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$10"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:id="@+id/active_totalAmount"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pending"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_status"
+                android:textColor="@android:color/holo_red_dark"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of workers:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_numOfDinners"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reservation Date:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10-03-2019"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_reservationDate"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reservation Time:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:30 Am to 11:30 Am"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_reservationTime"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasker Details :"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="John Doe"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_customerName"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number:"
+                android:textSize="12sp"
+                android:textColor="@color/textColor"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+971-893***"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/active_mobileNumber"
+                android:textColor="@color/textColor"
+                />
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

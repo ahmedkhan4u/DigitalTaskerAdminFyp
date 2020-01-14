@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ComplaintsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/custom_toolbar"
+                android:id="@+id/toolbar_complaints"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_image"
+                        android:id="@+id/complait_personImage"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toEndOf="@+id/complait_personImage"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jack Hugman"
+                                android:layout_marginEnd="110dp"
+                                android:textSize="16sp"
+                                android:id="@+id/complaint_personName"
+                                style="@style/TextAppearance.AppCompat.Title"
+                                />
+
+                            <TextView
+                                android:id="@+id/complaint_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"
+                                android:drawableStart="@drawable/icon_date"
+                                android:drawablePadding="10dp"
+                                android:gravity="center"
+                                android:text="July 10, 2019"
+                                android:textSize="12sp" />
+
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Has complaint about a restaurant"
+                            android:textSize="12sp"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complaint Title:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mis Behave and mis management"
+                    android:id="@+id/complaint_title"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complaint Description:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mis Behave and mis management"
+                    android:id="@+id/complaint_description"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tasker Details:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="John Doe"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:id="@+id/complaint_restName"
+                    android:drawablePadding="10dp"
+                    android:layout_alignParentEnd="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ABD, 13th street"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="12sp"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/icon_location"
+                    android:gravity="center"
+                    android:id="@+id/complaint_restLocation"
+                    android:drawablePadding="10dp"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    >
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/profile_image"
+                        android:id="@+id/complaint_hotelImage"
+                        android:scaleType="fitXY"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_round_corners"
+            android:text="Contact Tasker"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:onClick="ContactVendorClick"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_round_corners"
+            android:text="Contact Poster"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:onClick="ContactPosterClick"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_round_corners"
+            android:text="Resolved"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

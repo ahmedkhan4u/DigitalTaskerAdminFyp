@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/profile_image"
+                android:id="@+id/complait_personImage"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@+id/complait_personImage"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jack Hugman"
+                        android:layout_marginEnd="110dp"
+                        android:textSize="16sp"
+                        android:id="@+id/complaint_personName"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        />
+
+                    <TextView
+                        android:id="@+id/complaint_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="0dp"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/icon_date"
+                        android:text="July 10, 2019"
+                        android:textSize="12sp" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Has complaint about a tasker"
+                    android:textSize="12sp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complaint Title:"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mis Behave and mis management"
+            android:id="@+id/complaint_title"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasker Info:"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasker Name: Panera Beard"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:id="@+id/complaint_restName"
+            android:drawablePadding="10dp"
+            android:layout_alignParentEnd="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasker Location: ABD, 13th street"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:id="@+id/complaint_restLocation"
+            android:drawablePadding="10dp"
+            android:layout_alignParentEnd="true"
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
