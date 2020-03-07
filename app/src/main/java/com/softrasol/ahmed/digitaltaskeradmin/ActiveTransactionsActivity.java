@@ -20,6 +20,7 @@ public class ActiveTransactionsActivity extends AppCompatActivity {
 
     private void toolbarInflation() {
 
+        //..........................
         Toolbar toolbar;
         TextView textView;
         ImageButton mBtnBack;
