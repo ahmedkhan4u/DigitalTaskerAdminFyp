@@ -15,7 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".phone_auth_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FeedbackActivity" />
         <activity android:name=".ProfileSettingsActivity" />
         <activity android:name=".ChatsActivity" />
         <activity android:name=".CustomerSupportActivity" />
@@ -34,17 +41,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".ProjectMaps.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ManageUsersActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

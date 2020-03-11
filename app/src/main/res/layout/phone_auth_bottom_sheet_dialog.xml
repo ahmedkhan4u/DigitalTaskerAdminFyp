@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Phone_auth"
+        android:text="Phone Authentication"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_field"
+        android:layout_marginTop="20dp"
+        android:hint="+92 123 4567890"
+        android:textAlignment="center"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:padding="10dp"
+        android:background="@drawable/edit_text_round_corner"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Send Code"
+        android:id="@+id/send_verification_code"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/send_code_btn_round"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/code_field"
+        android:layout_marginTop="20dp"
+        android:hint="4 5 6 3"
+        android:textAlignment="center"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:padding="10dp"
+        android:background="@drawable/edit_text_round_corner"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Verify"
+        android:textSize="20sp"
+        android:id="@+id/verification_code"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/send_code_btn_round"/>
+
+</LinearLayout>
