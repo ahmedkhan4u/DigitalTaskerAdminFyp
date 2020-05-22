@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getContext(), ManageUsersActivity.class));
             }
         });
+        //
 
         return mView;
     }
