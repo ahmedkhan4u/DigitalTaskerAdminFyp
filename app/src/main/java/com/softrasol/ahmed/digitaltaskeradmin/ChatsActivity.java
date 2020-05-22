@@ -18,7 +18,7 @@ public class ChatsActivity extends AppCompatActivity {
 
 
     }
-
+//..................
     private void toolbarInflation() {
 
         Toolbar toolbar;
