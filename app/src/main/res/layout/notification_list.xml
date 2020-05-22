@@ -21,14 +21,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/profile_image"
-                android:id="@+id/notifyRestProfileImage"
-                android:layout_marginStart="10dp"
+                android:id="@+id/img_notification_profile"
+                android:layout_marginStart="4dp"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/notifyRestProfileImage"
+                android:layout_toEndOf="@+id/img_notification_profile"
                 android:layout_marginStart="8dp"
                 android:layout_toStartOf="@+id/icon_right"
                 android:layout_marginEnd="8dp"
@@ -40,9 +40,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Panera Bread"
-                    style="@style/TextAppearance.AppCompat.Title"
                     android:textSize="14sp"
-                    android:id="@+id/notify_restaurantName"
+                    android:id="@+id/txt_notification_title"
+                    android:textColor="@color/textColor"
                     />
 
                 <TextView
@@ -50,6 +50,8 @@
                     android:layout_height="wrap_content"
                     android:text="New user added"
                     android:textSize="13sp"
+                    android:id="@+id/txt_notification_body"
+                    android:fontFamily="@font/radomir_tinkov_gilroy_medium"
                     />
 
                 <TextView
@@ -58,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:text="20 mins ago"
                     android:textSize="11sp"
-                    android:id="@+id/notify_time"
+                    android:id="@+id/txt_notification_time"
+                    android:fontFamily="@font/radomir_tinkov_gilroy_regular"
                     />
 
 
