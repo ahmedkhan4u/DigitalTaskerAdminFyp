@@ -78,7 +78,7 @@
             android:layout_height="100dp"
             android:layout_marginStart="20dp"
             android:padding="30dp"
-            android:background="@drawable/imageview"
+            android:background="@drawable/card_outline_primary"
             android:src="@drawable/ic_credit_card"
             android:id="@+id/image_front"
             >
@@ -90,7 +90,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_height="100dp"
-            android:background="@drawable/imageview"
+            android:background="@drawable/card_outline_primary"
             android:src="@drawable/ic_credit_card"
             android:id="@+id/image_back"
             >

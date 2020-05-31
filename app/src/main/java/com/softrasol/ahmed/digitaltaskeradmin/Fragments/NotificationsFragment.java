@@ -1,7 +1,6 @@
 package com.softrasol.ahmed.digitaltaskeradmin.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,12 +15,10 @@ import android.view.ViewGroup;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.softrasol.ahmed.digitaltaskeradmin.Adapters.NotificationsAdapter;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.NotificationsModel;
-import com.softrasol.ahmed.digitaltaskeradmin.NotificationsActivity;
 import com.softrasol.ahmed.digitaltaskeradmin.R;
 
 import java.util.ArrayList;
@@ -67,11 +64,14 @@ public class NotificationsFragment extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("notifications").whereEqualTo("reciever_uid", "admin")
-                .orderBy("uid", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
                                         @Nullable FirebaseFirestoreException e) {
+
+                        if (!list.isEmpty()){
+                            list.clear();
+                        }
 
                         if (e != null){
                             Log.d("dxdiag", e.getMessage());

@@ -1,6 +1,7 @@
 package com.softrasol.ahmed.digitaltaskeradmin.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -18,13 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.NotificationsModel;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.UserDataModel;
+import com.softrasol.ahmed.digitaltaskeradmin.ViewUserProficeActivity;
 import com.softrasol.ahmed.digitaltaskeradmin.R;
 import com.squareup.picasso.Picasso;
 
@@ -53,12 +54,31 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        NotificationsModel model = list.get(position);
+        final NotificationsModel model = list.get(position);
 
         getSenderImageAndNameFromDatabase(model, holder);
 
         holder.mTxtDateTime.setText(model.getTime_stamp());
         holder.mTxtBody.setText(model.getBody());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoNotificationViewActivity(model.getType(), model.getSender_uid());
+            }
+        });
+
+    }
+
+    private void gotoNotificationViewActivity(String type, String uid) {
+
+        if (type.equalsIgnoreCase("new user")){
+
+            Intent intent = new Intent(context, ViewUserProficeActivity.class);
+            intent.putExtra("uid", uid);
+            context.startActivity(intent);
+            return;
+        }
 
     }
 
