@@ -35,30 +35,12 @@
         android:background="@color/lightGreyColor"
         />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/UserProfile"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view_home"
         >
 
-        <include layout="@layout/manage_users_list"
-            />
-        <include layout="@layout/manage_users_list"/>
-        <include layout="@layout/manage_users_list"/>
-        <include layout="@layout/manage_users_list"/>
-        <include layout="@layout/manage_users_list"/>
-        <include layout="@layout/manage_users_list"/>
-        <include layout="@layout/manage_users_list"/>
-
-
-    </LinearLayout>
-
-</ScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

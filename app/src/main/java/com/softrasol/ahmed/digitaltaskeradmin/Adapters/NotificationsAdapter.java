@@ -98,14 +98,27 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
                         UserDataModel userDataModel = snapshot.toObject(UserDataModel.class);
 
-                        String boldText = userDataModel.getName();
-                        String normalText = model.getTitle();
-                        SpannableString str = new SpannableString(boldText + " " + normalText);
-                        str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        if (userDataModel.getIs_verified()
+                                .equalsIgnoreCase("false")){
+                            String boldText = userDataModel.getName();
+                            String normalText = model.getTitle();
+                            SpannableString str = new SpannableString(boldText + " " + normalText);
+                            str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            holder.mTxtTitle.setText(str);
 
-                        holder.mTxtTitle.setText(str);
+                        }else {
+                            String boldText = userDataModel.getName();
+                            String normalText = "";
+                            SpannableString str = new SpannableString(boldText + " " + normalText);
+                            holder.mTxtBody.setText(userDataModel.getAddress());
+                            str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            holder.mTxtTitle.setText(str);
+                        }
+
+
                         Picasso.get().load(userDataModel.getProfile_img()).placeholder(R.drawable.profile_image)
                                 .resize(80, 80).into(holder.mImgProfile);
+
                     }
 
 

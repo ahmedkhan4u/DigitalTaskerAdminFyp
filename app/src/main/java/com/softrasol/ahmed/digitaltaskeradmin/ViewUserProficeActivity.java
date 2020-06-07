@@ -43,7 +43,7 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
     private String mUid;
 
     private GoogleMap mMap;
-    private Button mBtnVerifyUser;
+    private Button mBtnVerifyUser, mBtnUnVerifyUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +175,8 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
         }else {
             mTxtStatus.setText("Verified");
             mTxtStatus.setTextColor(Color.parseColor("#4CAF50"));
+            mBtnVerifyUser.setVisibility(View.GONE);
+            mBtnUnVerifyUser.setVisibility(View.VISIBLE);
         }
 
         // Set Location On Google Map
@@ -210,6 +212,7 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
         mTxtPhone = findViewById(R.id.txt_notify_verif_phone);
 
         mBtnVerifyUser = findViewById(R.id.btn_notif_verif_verify_profile);
+        mBtnUnVerifyUser = findViewById(R.id.btn_notif_verif_un_verify_user);
 
     }
 

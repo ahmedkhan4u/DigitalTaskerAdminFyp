@@ -432,17 +432,18 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="12dp"
-            android:visibility="gone"
+            android:visibility="visible"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Restrict Ordering on App"
+                android:text="Restrict user on app"
                 android:drawablePadding="8dp"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:gravity="center"
                 android:textColor="@color/textColor"
+                android:layout_marginStart="8dp"
                 />
 
             <Switch
@@ -474,11 +475,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_round_corners"
-            android:text="Add/View Menu"
+            android:text="Un Verify User"
             android:layout_marginTop="8dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:visibility="gone"
+            android:id="@+id/btn_notif_verif_un_verify_user"
             android:textColor="@android:color/white"
             />
 
