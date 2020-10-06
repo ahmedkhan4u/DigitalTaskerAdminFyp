@@ -452,6 +452,7 @@
                 android:textSize="12sp"
                 android:drawablePadding="8dp"
                 android:gravity="center"
+                android:id="@+id/restrict_user"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/textColor"

@@ -88,10 +88,11 @@
                         </RelativeLayout>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Has complaint about a restaurant"
+                            android:text="Reported"
                             android:textSize="12sp"
+                            android:id="@+id/complaint_reciever_address"
                             />
                     </LinearLayout>
                 </RelativeLayout>
@@ -135,11 +136,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tasker Details:"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:text="Sender Details:"
                     android:textSize="12sp"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:id="@+id/complaint_restName"
+                    android:id="@+id/complaint_senderName"
                     android:drawablePadding="10dp"
                     android:layout_alignParentEnd="true"
                     />
@@ -163,7 +163,7 @@
                     android:layout_marginTop="10dp"
                     android:drawableStart="@drawable/icon_location"
                     android:gravity="center"
-                    android:id="@+id/complaint_restLocation"
+                    android:id="@+id/complaint_senderAddress"
                     android:drawablePadding="10dp"
                     android:layout_alignParentEnd="true"
                     />
@@ -179,7 +179,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/profile_image"
-                        android:id="@+id/complaint_hotelImage"
+                        android:id="@+id/complaint_senderImage"
                         android:scaleType="fitXY"
                         />
 
@@ -224,6 +224,7 @@
             android:layout_marginEnd="16dp"
             android:textColor="@android:color/white"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             />
 
     </LinearLayout>

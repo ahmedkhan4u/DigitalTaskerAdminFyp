@@ -6,11 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,11 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.softrasol.ahmed.digitaltaskeradmin.Adapters.HomeTabsAccessorAdapter;
 import com.softrasol.ahmed.digitaltaskeradmin.Fragments.HomeFragment;
-import com.softrasol.ahmed.digitaltaskeradmin.Fragments.ManageWorkersFragment;
+import com.softrasol.ahmed.digitaltaskeradmin.Fragments.ComplaintsFragment;
 import com.softrasol.ahmed.digitaltaskeradmin.Fragments.MenuFragment;
 import com.softrasol.ahmed.digitaltaskeradmin.Fragments.NotificationsFragment;
 import com.softrasol.ahmed.digitaltaskeradmin.Interfaces.ToastMessage;
-import com.softrasol.ahmed.digitaltaskeradmin.Services.NotificationService;
 
 public class MainActivity extends AppCompatActivity implements ToastMessage {
 
@@ -100,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements ToastMessage {
         HomeTabsAccessorAdapter adapter = new HomeTabsAccessorAdapter(getSupportFragmentManager());
         adapter.setFragment(new HomeFragment(),"");
         adapter.setFragment(new NotificationsFragment(),"");
-        adapter.setFragment(new ManageWorkersFragment(), "");
+        adapter.setFragment(new ComplaintsFragment(), "");
         adapter.setFragment(new MenuFragment(), "");
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(adapter);

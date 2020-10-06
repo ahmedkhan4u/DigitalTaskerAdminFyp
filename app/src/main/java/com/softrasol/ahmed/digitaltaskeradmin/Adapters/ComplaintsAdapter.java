@@ -23,23 +23,27 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.softrasol.ahmed.digitaltaskeradmin.ComplaintsActivity;
 import com.softrasol.ahmed.digitaltaskeradmin.Helper.GetTimeAgo;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.NotificationsModel;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.UserDataModel;
-import com.softrasol.ahmed.digitaltaskeradmin.ViewUserProficeActivity;
 import com.softrasol.ahmed.digitaltaskeradmin.R;
+import com.softrasol.ahmed.digitaltaskeradmin.ViewUserProficeActivity;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> {
+public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ViewHolder> {
 
     private List<NotificationsModel> list;
     private Context context;
 
-    public NotificationsAdapter(List<NotificationsModel> list, Context context) {
+    public static List<NotificationsModel> complaintList = new ArrayList<>();
+
+    public ComplaintsAdapter(List<NotificationsModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -49,47 +53,32 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.notification_list, parent, false);
+                .inflate(R.layout.complaints_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final NotificationsModel model = list.get(position);
 
-        getSenderImageAndNameFromDatabase(model, holder);
+        getRevieverImageAndNameFromDatabase(model, holder);
+        getSenderDataFromFirestore(model, holder);
 
-        holder.mTxtDateTime.setText(model.getTime_stamp());
-
-        try{
-            long time = Long.parseLong(model.getTime_stamp());
-            holder.mTxtDateTime.setText(GetTimeAgo.getTimeAgo(time, context));
-        }catch (Exception ex){}
-
-        holder.mTxtBody.setText(model.getBody());
+        long time_stamp = Long.parseLong(model.getTime_stamp());
+        holder.mTxtDateTime.setText(GetTimeAgo.getTimeAgo(time_stamp, context));
+        holder.mTxtComplaintTitle.setText(model.getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoNotificationViewActivity(model.getType(), model.getSender_uid());
+                complaintList.add(model);
+                context.startActivity(new Intent(context, ComplaintsActivity.class));
             }
         });
 
     }
 
-    private void gotoNotificationViewActivity(String type, String uid) {
-
-        if (type.equalsIgnoreCase("new user")){
-
-            Intent intent = new Intent(context, ViewUserProficeActivity.class);
-            intent.putExtra("uid", uid);
-            context.startActivity(intent);
-            return;
-        }
-
-    }
-
-    private void getSenderImageAndNameFromDatabase(final NotificationsModel model, final ViewHolder holder) {
+    private void getSenderDataFromFirestore(NotificationsModel model, final ViewHolder holder) {
 
         CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("users");
 
@@ -105,31 +94,41 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
                         UserDataModel userDataModel = snapshot.toObject(UserDataModel.class);
 
-                        if (userDataModel.getIs_verified()
-                                .equalsIgnoreCase("false")){
-                            String boldText = userDataModel.getName();
-                            String normalText = model.getTitle();
-                            SpannableString str = new SpannableString(boldText + " " + normalText);
-                            str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            holder.mTxtTitle.setText(str);
-
-                        }else {
-                            String boldText = userDataModel.getName();
-                            String normalText = "";
-                            SpannableString str = new SpannableString(boldText + " " + normalText);
-                            holder.mTxtBody.setText(userDataModel.getAddress());
-                            str.setSpan(new StyleSpan(Typeface.BOLD), 0, boldText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            holder.mTxtTitle.setText(str);
-                        }
-
-
-                        Picasso.get().load(userDataModel.getProfile_img()).placeholder(R.drawable.profile_image)
-                                .resize(80, 80).into(holder.mImgProfile);
+                        holder.mTxtSenderName.setText(userDataModel.getName());
+                        holder.mTxtSenderAddress.setText(userDataModel.getAddress());
 
                     }
 
+                }else {
+                    Log.d("dxdiag", task.getException().getMessage());
+                }
+            }
+        });
 
-            }else {
+    }
+
+    private void getRevieverImageAndNameFromDatabase(final NotificationsModel model, final ViewHolder holder) {
+
+        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("users");
+
+        Query query = collectionReference.whereEqualTo("uid", model.getReciever_uid());
+
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    Toast.makeText(context, task.getResult().toString(), Toast.LENGTH_SHORT).show();
+                    for (QueryDocumentSnapshot snapshot : task.getResult()){
+
+                        UserDataModel userDataModel = snapshot.toObject(UserDataModel.class);
+
+                        holder.mTxtName.setText(userDataModel.getName());
+                        Picasso.get().load(userDataModel.getProfile_img()).placeholder(R.drawable.profile_image)
+                                .resize(80, 80).into(holder.mImgProfile);
+                    }
+
+                }else {
                     Log.d("dxdiag", task.getException().getMessage());
                 }
             }
@@ -145,15 +144,18 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private CircleImageView mImgProfile;
-        private TextView mTxtTitle, mTxtBody, mTxtDateTime;
+        private TextView mTxtName, mTxtDateTime, mTxtComplaintTitle, mTxtSenderName,
+        mTxtSenderAddress;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mImgProfile = itemView.findViewById(R.id.img_notification_profile);
-            mTxtTitle = itemView.findViewById(R.id.txt_notification_title);
-            mTxtBody = itemView.findViewById(R.id.txt_notification_body);
-            mTxtDateTime = itemView.findViewById(R.id.txt_notification_time);
+            mImgProfile = itemView.findViewById(R.id.complait_personImage);
+            mTxtName = itemView.findViewById(R.id.complaint_personName);
+            mTxtDateTime = itemView.findViewById(R.id.complaint_date);
+            mTxtComplaintTitle = itemView.findViewById(R.id.complaint_title);
+            mTxtSenderName =  itemView.findViewById(R.id.complaint_sender_name);
+            mTxtSenderAddress = itemView.findViewById(R.id.complaint_address);
 
         }
     }

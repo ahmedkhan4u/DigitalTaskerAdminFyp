@@ -9,8 +9,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +29,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.softrasol.ahmed.digitaltaskeradmin.Helper.DatabaseHelper;
+import com.softrasol.ahmed.digitaltaskeradmin.Helper.Notification;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.NotificationsModel;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.UserDataModel;
 import com.squareup.picasso.Picasso;
@@ -41,9 +45,14 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
     private TextView mTxtName, mTxtCategory, mTxtStatus, mTxtEmail, mTxtAddress, mTxtDescription,
     mTxtPhone;
     private String mUid;
+    private Switch mSwitch;
+    private String isRestrict;
+
 
     private GoogleMap mMap;
     private Button mBtnVerifyUser, mBtnUnVerifyUser;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +67,84 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
 
         getUserDetailsFromFirebaseDatabase();
 
+        checkUserRestriction();
+        restrictClicked();
         verifyUserClick();
+        unVerifyClick();
 
+
+
+
+    }
+
+    private void unVerifyClick() {
+
+        mBtnUnVerifyUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map map = new HashMap();
+                map.put("is_verified", "false");
+                DatabaseHelper.mDatabase.collection("users").document(mUid)
+                        .update(map);
+                mBtnUnVerifyUser.setVisibility(View.GONE);
+                mBtnVerifyUser.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+    }
+
+    private void restrictClicked() {
+
+        mSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRestrict.equalsIgnoreCase("true")){
+                    updateRestrictMode("false");
+                    isRestrict = "false";
+                }else if (isRestrict.equalsIgnoreCase("false")){
+                    updateRestrictMode("true");
+                    isRestrict = "true";
+                }
+            }
+        });
+
+    }
+
+    private void updateRestrictMode(String text) {
+
+        Map map = new HashMap();
+        map.put("is_restrict", text);
+        DatabaseHelper.mDatabase.collection("users").document(mUid)
+                .update(map);
+
+    }
+
+    private void checkUserRestriction() {
+
+        DatabaseHelper.mDatabase.collection("users").document(mUid)
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+
+                    isRestrict = task.getResult().get("is_restrict").toString();
+
+                    if (isRestrict.equalsIgnoreCase("true")){
+                        mSwitch.setChecked(true);
+                    }
+
+                    if (task.getResult().get("is_verified").toString()
+                            .equalsIgnoreCase("true")){
+                        mBtnVerifyUser.setVisibility(View.GONE);
+                        mBtnUnVerifyUser.setVisibility(View.VISIBLE);
+                    }else {
+                        mBtnVerifyUser.setVisibility(View.VISIBLE);
+                        mBtnUnVerifyUser.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
 
     }
 
@@ -93,34 +178,14 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
     }
 
     private void sendUserVerifiedNotification() {
-        CollectionReference notificationReference = FirebaseFirestore.getInstance()
-                .collection("notifications");
 
-        String uid = notificationReference.document().getId();
-        DocumentReference documentReference = notificationReference.document(uid);
-
-        Date date = new Date();
-        String mDate = date.toLocaleString();
+        String uid = DatabaseHelper.mDatabase.collection("notifications").document().getId();
 
         NotificationsModel model = new NotificationsModel("Verified by admin"
-                ,"Your profile is verified by admin keep using our services",mDate, "admin"
+                ,"Your profile is verified by admin keep using our services",System.currentTimeMillis()+"", "admin"
                 ,mUid,"false","new user",uid);
 
-
-        documentReference.set(model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(ViewUserProficeActivity.this,
-                            "User approval notification send", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }else {
-                    Toast.makeText(ViewUserProficeActivity.this,
-                            task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Notification.postComplaint(getApplicationContext(), model);
     }
 
     private void getUserDetailsFromFirebaseDatabase() {
@@ -213,6 +278,7 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
 
         mBtnVerifyUser = findViewById(R.id.btn_notif_verif_verify_profile);
         mBtnUnVerifyUser = findViewById(R.id.btn_notif_verif_un_verify_user);
+        mSwitch = findViewById(R.id.restrict_user);
 
     }
 
