@@ -185,7 +185,7 @@ public class ViewUserProficeActivity extends FragmentActivity implements OnMapRe
                 ,"Your profile is verified by admin keep using our services",System.currentTimeMillis()+"", "admin"
                 ,mUid,"false","new user",uid);
 
-        Notification.postComplaint(getApplicationContext(), model);
+        Notification.sendNotification(getApplicationContext(), model);
     }
 
     private void getUserDetailsFromFirebaseDatabase() {

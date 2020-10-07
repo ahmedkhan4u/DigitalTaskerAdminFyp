@@ -62,6 +62,9 @@ public class ComplaintsFragment extends Fragment {
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                list.clear();
+
                 if (task.isSuccessful()){
                     if (!task.getResult().isEmpty()){
                         for (QueryDocumentSnapshot snapshot : task.getResult()){

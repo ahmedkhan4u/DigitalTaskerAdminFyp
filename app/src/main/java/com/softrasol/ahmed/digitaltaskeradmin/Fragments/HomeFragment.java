@@ -23,6 +23,7 @@ import com.softrasol.ahmed.digitaltaskeradmin.Adapters.NotificationsAdapter;
 import com.softrasol.ahmed.digitaltaskeradmin.ManageUsersActivity;
 import com.softrasol.ahmed.digitaltaskeradmin.Model.NotificationsModel;
 import com.softrasol.ahmed.digitaltaskeradmin.R;
+import com.softrasol.ahmed.digitaltaskeradmin.SearchUserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment {
     private List<NotificationsModel> list;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
@@ -52,6 +53,15 @@ public class HomeFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_home, container, false);
 
         userRecyclerViewImplementation();
+
+        mView.findViewById(R.id.txt_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchUserActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
         return mView;
     }

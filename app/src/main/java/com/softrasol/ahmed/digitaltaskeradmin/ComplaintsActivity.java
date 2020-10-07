@@ -86,7 +86,7 @@ public class ComplaintsActivity extends AppCompatActivity {
                     UserDataModel model = task.getResult().toObject(UserDataModel.class);
                     mTxtRecieverName.setText(model.getName());
                     Picasso.get().load(model.getProfile_img()).placeholder(R.drawable.profile_image)
-                            .into(mImgSenderImage);
+                            .into(mRevieverProfile);
                     mTxtRecieverAddress.setText(model.getAddress());
                     recieverEmail = model.getEmail();
 
@@ -104,7 +104,7 @@ public class ComplaintsActivity extends AppCompatActivity {
         mTxtTime = findViewById(R.id.complaint_date);
         mTxtTitle = findViewById(R.id.complaint_title);
         mTxtDescription = findViewById(R.id.complaint_description);
-        mTxtSenderName = findViewById(R.id.complaint_senderName);
+        mTxtSenderName = findViewById(R.id.complaints_senderName);
         mTxtSenderAddress = findViewById(R.id.complaint_senderAddress);
         mTxtRecieverAddress = findViewById(R.id.complaint_reciever_address);
 
@@ -113,19 +113,23 @@ public class ComplaintsActivity extends AppCompatActivity {
 
     public void ContactVendorClick(View view) {
 
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto",senderEmail, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
-        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+        Intent intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Help And Support");
+        intent.putExtra(Intent.EXTRA_TEXT, "Type Description Here");
+        intent.setData(Uri.parse("mailto:"+senderEmail)); // or just "mailto:" for blank
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+        startActivity(intent);
     }
 
     public void ContactPosterClick(View view) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto",recieverEmail, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body");
-        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Help And Support");
+        intent.putExtra(Intent.EXTRA_TEXT, "Type Description Here");
+        intent.setData(Uri.parse("mailto:"+recieverEmail)); // or just "mailto:" for blank
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+        startActivity(intent);
+
     }
 
     private void toolbarInflation() {

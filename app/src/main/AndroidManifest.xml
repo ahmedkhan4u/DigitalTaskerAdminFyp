@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".SearchUserActivity"></activity>
+        <activity android:name=".SignInActivity" />
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".ProfileSettingsActivity" />
         <activity android:name=".ChatsActivity" />
@@ -50,9 +51,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Services.NotificationService"
-            android:enabled="true"
-            />
+        <service
+            android:name=".Services.NotificationService"
+            android:enabled="true" />
     </application>
 
 </manifest>

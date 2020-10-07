@@ -58,7 +58,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final NotificationsModel model = list.get(position);
 
         getRevieverImageAndNameFromDatabase(model, holder);
@@ -71,7 +71,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                complaintList.add(model);
+                complaintList.add(list.get(position));
                 context.startActivity(new Intent(context, ComplaintsActivity.class));
             }
         });
